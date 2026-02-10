@@ -1,7 +1,16 @@
-package utl
+// Package plrl provides functions for handling language plurals.
+package plrl
 
-// Plural returns an "s" if length != 1
-func Plural(length int, single, multiple string) string {
+// Any returns string `single` when length is 1 or -1, otherwise returns `multiple`.
+func Any(length int, single, multiple string) string {
+	if length == 1 || length == -1 {
+		return single
+	}
+	return multiple
+}
+
+// Many returns an "s" if length != 1
+func Many(length int, single, multiple string) string {
 	if length != 1 && length != -1 {
 		if multiple != "" {
 			return multiple
@@ -12,4 +21,12 @@ func Plural(length int, single, multiple string) string {
 		return single
 	}
 	return ""
+}
+
+// S returns an "s" when length is not 1 or -1.
+func S(length int) string {
+	if length == 1 || length == -1 {
+		return ""
+	}
+	return "s"
 }

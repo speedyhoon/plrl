@@ -1,3 +1,3 @@
-module github.com/speedyhoon/utl
+module github.com/speedyhoon/plrl
 
 go 1.17
