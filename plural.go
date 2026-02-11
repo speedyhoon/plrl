@@ -9,18 +9,16 @@ func Any(length int, single, multiple string) string {
 	return multiple
 }
 
-// Many returns an "s" if length != 1
+// Many returns string `single` when length is 1 or -1,
+// otherwise returns `multiple`, or an "s" if `multiple` is empty.
 func Many(length int, single, multiple string) string {
-	if length != 1 && length != -1 {
-		if multiple != "" {
-			return multiple
-		}
-		return "s"
-	}
-	if single != "" {
+	if length == 1 || length == -1 {
 		return single
 	}
-	return ""
+	if multiple != "" {
+		return multiple
+	}
+	return "s"
 }
 
 // S returns an "s" when length is not 1 or -1.
